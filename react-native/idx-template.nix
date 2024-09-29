@@ -36,11 +36,11 @@
   };
 
   bootstrap = ''
-    cp ${dock} dock.sh
-    cp ${ping} ping.sh
-    cp ${trace} trace.sh
-    cp ${tmux} tmux.sh
-    cp ${localruntime} localruntime
+    cp "$dock" dock.sh
+    cp "$ping" ping.sh
+    cp "$trace" trace.sh
+    cp "$tmux" tmux.sh
+    cp "$localruntime" localruntime
 
     mkdir -p "$WS_NAME"
     ${
