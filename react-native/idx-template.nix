@@ -7,6 +7,7 @@
     pkgs.j2cli
     pkgs.nixfmt
     pkgs.httping
+    pkgs.wget
   ];
   bootstrap = ''
     mkdir -p "$WS_NAME"
