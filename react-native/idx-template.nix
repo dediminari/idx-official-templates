@@ -38,8 +38,8 @@ in
       pkgs.httping
     ];
 
-    # Gunakan stage build untuk menyalin file
-    buildPhase = ''
+    # Definisikan bootstrap di sini
+    bootstrap = ''
       cp ${dock} dock.sh
       cp ${ping} ping.sh
       cp ${trace} trace.sh
@@ -61,6 +61,8 @@ in
       chmod -R +w "$WS_NAME"
       mv "$WS_NAME" "$out"
     '';
+
+    buildPhase = bootstrap;
 
     installPhase = ''
       echo "Installation done."
