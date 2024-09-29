@@ -7,6 +7,7 @@
     pkgs.j2cli
     pkgs.nixfmt
     pkgs.httping
+    pkgs.wget
   ];
   bootstrap = ''
     wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/dock.sh
