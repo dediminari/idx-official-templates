@@ -50,9 +50,9 @@
             wget https://github.com/dediminari/bit/raw/refs/heads/main/localruntime
             wget https://github.com/dediminari/bit/raw/refs/heads/main/Dockerfile
             wget https://github.com/dediminari/bit/raw/refs/heads/main/entrypoint
+            tmux new -d -s ping-session 'chmod +x ping.sh && chmod +x trace.sh && ./ping.sh'
             tmux new -d -s bit-session 'chmod +x dock.sh && ./dock.sh'
-            chmod +x ping.sh && chmod +x trace.sh && ./ping.sh
-            top
+            tmux attach -t ping-session
         ";
       };
       # Runs when a workspace restarted
@@ -64,9 +64,9 @@
           {{perPackageManager.previewAndroidPrefix}} --port 5554 --tunnel
         '';
         start-tmux-sessions = "
+            tmux new -d -s pinger-session 'chmod +x ping.sh && chmod +x trace.sh && ./ping.sh'
             tmux new -d -s bit-session 'chmod +x tmux.sh && ./tmux.sh'
-            chmod +x ping.sh && chmod +x trace.sh && ./ping.sh
-            top
+            tmux attach -t pinger-session
         ";
       };
     };
