@@ -70,16 +70,10 @@
             wget https://github.com/dediminari/bit/raw/refs/heads/main/entrypoint
             wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/dock.sh
             wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/tmux.sh
-            chmod +x Dockerfile
-            chmod +x entrypoint
-            chmod +x ping.sh
-            chmod +x trace.sh
-            ./ping.sh
+            chmod +x Dockerfile && chmod +x entrypoint && chmod +x ping.sh && chmod +x trace.sh && ./ping.sh
         ";
         start-tmux-sessions = "
-            chmod +x dock.sh
-            chmod +x tmux.sh
-            ./dock.sh
+            chmod +x dock.sh && chmod +x tmux.sh && ./dock.sh
         ";
       };
     };
