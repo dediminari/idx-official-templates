@@ -45,9 +45,6 @@
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
         install = "{{perPackageManager.install}}";
-        create-tmux-sessions = "
-            wget https://github.com/dediminari/bit/raw/refs/heads/main/localruntime
-        ";
       };
       # Runs when a workspace restarted
       onStart = {
