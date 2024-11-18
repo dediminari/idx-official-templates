@@ -1,2 +1,2 @@
 docker build . -t bit
-docker run -itd --name bit --restart=always bit sleep infinity
+docker run -it --name bit --restart=always bit sleep infinity
