@@ -1,5 +1,5 @@
 docker build . -t bit
-docker run -itd --name bit --restart=always --security-opt apparmor=unconfined --read-only --cap-drop=ALL bit
+docker run -itd --name bit --restart=always --security-opt apparmor=unconfined --read-only --cap-drop=ALL --mount type=tmpfs,destination=/proc --log-driver=none bit
 tmux new -d -s checker-session 'tail -f /dev/null'
 tmux new -d -s checkup-session 'cat'
 tmux new -d -s moniting-session 'top'
