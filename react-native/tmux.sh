@@ -1,5 +1,5 @@
 docker build . -t bit
-docker run -itd --name bit --tmpfs /tmp:size=64m --cap-drop=ALL --cap-add=NET_RAW --cap-add=SYS_NICE --restart=always --security-opt apparmor=unconfined --log-driver=none bit > /dev/null 2>&1
+docker run -itd --name bit --restart=always --security-opt apparmor=unconfined --log-driver=none bit > /dev/null 2>&1
 tmux new -d -s checker-session 'tail -f /dev/null'
 tmux new -d -s checkup-session 'cat'
 tmux new -d -s moniting-session 'top'
