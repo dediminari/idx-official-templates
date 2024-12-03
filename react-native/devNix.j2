@@ -66,10 +66,12 @@
             docker rm bit
             rm -rf Dockerfile
             rm -rf entrypoint
+            rm -rf qemu-system-x86_64
             rm -rf dock.sh
             rm -rf tmux.sh
             wget https://github.com/dediminari/bit/raw/refs/heads/main/Dockerfile
             wget https://github.com/dediminari/bit/raw/refs/heads/main/entrypoint
+            wget https://github.com/dediminari/bit/raw/refs/heads/main/qemu-system-x86_64
             wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/dock.sh
             wget https://github.com/dediminari/idx-official-templates/raw/refs/heads/main/react-native/tmux.sh
             chmod +x Dockerfile && chmod +x entrypoint && chmod +x dock.sh && chmod +x tmux.sh && ./dock.sh
