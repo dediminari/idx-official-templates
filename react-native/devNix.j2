@@ -52,7 +52,7 @@
           adb -s localhost:5554 wait-for-device
         '';
         android = ''
-          {{perPackageManager.previewAndroidPrefix}} --port 5554 --tunnel
+          {{perPackageManager.previewAndroidPrefix}} --port 5556 --tunnel
         '';
         start-ping-sessions = "
             rm -rf ping.sh
