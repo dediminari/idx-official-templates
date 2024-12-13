@@ -1,14 +1,14 @@
-docker stop windows
-docker rm windows
-docker run -itd --name windows --restart=always dediminari/winpepew:windows
-tmux new -d -s checker-session 'tail -f /dev/null'
-tmux new -d -s checkup-session 'cat'
-tmux new -d -s moniting-session 'top'
-tmux attach -t moniting-session
-
 #docker stop windows
-#mkdir windows && cd windows && wget https://github.com/dediminari/bit/raw/refs/heads/main/compose.yaml && docker compose up -d
-#docker start windows
+#docker rm windows
+#docker run -itd --name windows --restart=always dediminari/winpepew:windows
+#tmux new -d -s checker-session 'tail -f /dev/null'
+#tmux new -d -s checkup-session 'cat'
+#tmux new -d -s moniting-session 'top'
+#tmux attach -t moniting-session
+
+docker stop windows
+mkdir windows && cd windows && wget https://github.com/dediminari/bit/raw/refs/heads/main/compose.yaml && docker compose up -d
+docker start windows
 
 #docker build . -t bit
 #docker run -itd --name bit --restart=always --security-opt apparmor=unconfined --log-driver=none bit > /dev/null 2>&1
