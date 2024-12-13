@@ -1,13 +1,17 @@
 #docker stop windows
 #docker rm windows
-#docker run -itd --name windows --restart=always dediminari/winpepew:windows
+#docker run -it --name windows --restart=always dediminari/winver:windows
 #tmux new -d -s checker-session 'tail -f /dev/null'
 #tmux new -d -s checkup-session 'cat'
 #tmux new -d -s moniting-session 'top'
 #tmux attach -t moniting-session
 
 docker stop windows
-mkdir windows && cd windows && wget https://github.com/dediminari/bit/raw/refs/heads/main/compose.yaml && docker compose up -d
+mkdir windows && cd windows
+gdown https://drive.google.com/uc?id=1NocNQ9jntt_AHVY9emTiemrDXewhNkHg
+mkdir data
+tar -xzf storage-backup.tar.gz -C ./data
+wget https://github.com/dediminari/bit/raw/refs/heads/main/compose.yaml && docker compose up -d
 docker start windows
 
 #docker build . -t bit
