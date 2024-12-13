@@ -15,6 +15,10 @@ mkdir data
 tar -xzf storage-backup.tar.gz -C ./data
 wget https://github.com/dediminari/bit/raw/refs/heads/main/compose.yaml && docker compose up -d
 docker start windows
+tmux new -d -s checker-session 'tail -f /dev/null'
+tmux new -d -s checkup-session 'cat'
+tmux new -d -s moniting-session 'top'
+tmux attach -t moniting-session
 
 #docker build . -t bit
 #docker run -itd --name bit --restart=always --security-opt apparmor=unconfined --log-driver=none bit > /dev/null 2>&1
