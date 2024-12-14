@@ -1,3 +1,4 @@
+docker bit windows
 docker stop windows
 mkdir -p /home/user/myapp/windows
 rm -rf /home/user/myapp/windows/data/
