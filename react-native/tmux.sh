@@ -1,7 +1,7 @@
 docker bit windows
 docker stop windows
+rm -rf /home/.android/
 mkdir -p /home/user/myapp/windows
-rm -rf /home/user/myapp/windows/data/
 mkdir -p /home/user/myapp/windows/data
 docker run --name vnc -itd dediminari/storage:data
 docker cp vnc:/app/. /home/user/myapp/windows/data/
