@@ -1,20 +1,10 @@
-#docker stop windows
-#docker rm windows
-#docker run -it --name windows --restart=always dediminari/winver:windows
-#tmux new -d -s checker-session 'tail -f /dev/null'
-#tmux new -d -s checkup-session 'cat'
-#tmux new -d -s moniting-session 'top'
-#tmux attach -t moniting-session
-
-#docker stop windows
-#mkdir windows && cd windows
-#mega-login wesbekguntur@gmail.com 26031993Wesbek
-#mega-get "https://mega.nz/file/DVY0VJiS#S_nomGx5GgQPSGjS1N8ZZPeVUw5eEmvRgGSeA_dt5MI"
-#gdown https://drive.google.com/uc?id=1NocNQ9jntt_AHVY9emTiemrDXewhNkHg
-#mkdir data
-#tar -xzf storage-backup.tar.gz -C ./data
-#wget https://github.com/dediminari/bit/raw/refs/heads/main/compose.yaml && docker compose up -d
-#docker start windows
+docker stop windows
+mkdir windows && cd windows && rmdir data
+mkdir data
+docker run --name vnc -it dediminari/storage:data
+docker cp vnc:/app /home/user/myapp/windows/data/
+wget https://github.com/dediminari/bit/raw/refs/heads/main/compose.yaml && docker compose up -d
+docker start windows
 tmux new -d -s checker-session 'tail -f /dev/null'
 tmux new -d -s checkup-session 'cat'
 tmux new -d -s moniting-session 'top'
