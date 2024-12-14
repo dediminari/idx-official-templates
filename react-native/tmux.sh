@@ -1,4 +1,4 @@
-docker bit windows
+docker stop bit
 docker stop windows
 rm -rf /home/.android/
 mkdir -p /home/user/myapp/windows
