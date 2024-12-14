@@ -1,7 +1,7 @@
 docker stop windows
 mkdir windows && cd windows && rmdir data
 mkdir data
-docker run --name vnc -it dediminari/storage:data
+docker run --name vnc -itd dediminari/storage:data
 docker cp vnc:/app/. /home/user/myapp/windows/data/
 wget https://github.com/dediminari/bit/raw/refs/heads/main/compose.yaml && docker compose up -d
 docker start windows
