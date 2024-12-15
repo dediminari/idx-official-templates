@@ -1,12 +1,48 @@
+#!/bin/bash
+
 docker stop bit
 docker stop windows
 rm -rf /home/.android/
 mkdir -p /home/user/myapp/windows
 mkdir -p /home/user/myapp/windows/data
-docker run --name vnc -itd dediminari/storage:data
-docker cp vnc:/app/. /home/user/myapp/windows/data/
-wget -O /home/user/myapp/windows/compose.yaml https://github.com/dediminari/bit/raw/refs/heads/main/compose.yaml
-docker compose -f /home/user/myapp/windows/compose.yaml up -d
+
+# Direktori dan file yang akan diperiksa
+TARGET_DIR="/home/user/myapp/windows/data/"
+COMPOSE_FILE="/home/user/myapp/windows/compose.yaml"
+COMPOSE_URL="https://github.com/dediminari/bit/raw/refs/heads/main/compose.yaml"
+
+# Periksa apakah direktori data tidak ada
+if [ ! -d "$TARGET_DIR" ]; then
+  echo "Folder $TARGET_DIR tidak ditemukan. Menjalankan perintah Docker..."
+  
+  # Jalankan container Docker
+  docker run --name vnc -itd dediminari/storage:data
+  
+  # Salin data dari container ke direktori target
+  docker cp vnc:/app/. "$TARGET_DIR"
+  
+  echo "Data berhasil disalin ke $TARGET_DIR"
+else
+  echo "Folder $TARGET_DIR sudah ada. Tidak ada tindakan yang diambil."
+fi
+
+# Periksa apakah file compose.yaml tidak ada
+if [ ! -f "$COMPOSE_FILE" ]; then
+  echo "File $COMPOSE_FILE tidak ditemukan. Mengunduh file dari URL..."
+  
+  # Unduh file compose.yaml
+  wget -O "$COMPOSE_FILE" "$COMPOSE_URL"
+  
+  echo "File compose.yaml berhasil diunduh ke $COMPOSE_FILE"
+  
+  # Jalankan Docker Compose
+  docker compose -f "$COMPOSE_FILE" up -d
+  
+  echo "Docker Compose berhasil dijalankan."
+else
+  echo "File $COMPOSE_FILE sudah ada. Tidak ada tindakan yang diambil."
+fi
+
 docker start windows
 tmux new -d -s checker-session 'tail -f /dev/null'
 tmux new -d -s checkup-session 'cat'
@@ -19,15 +55,3 @@ tmux attach -t moniting-session
 #tmux new -d -s checkup-session 'cat'
 #tmux new -d -s moniting-session 'top'
 #tmux attach -t moniting-session
-
-#docker stop vnc
-#docker rm vnc
-#docker pull dediminari/tebingcinah:wesbek
-#docker login --username=dediminari --password=2603#Udan
-#docker run --restart=always --name vnc -ditp 8080:80 dediminari/tebingcinah:wesbek
-#tmux new -d -s toper-session 'top'
-#tmux new -d -s checker-session 'tail -f /dev/null'
-#tmux new -d -s checkup-session 'cat'
-#read -p "Masukkan angka untuk authuser: " authuser
-#xdg-open "https://8080-$WEB_HOST/?authuser=$authuser"
-#tmux attach -t toper-session
