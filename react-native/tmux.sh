@@ -4,7 +4,7 @@ kill 8
 docker stop bit
 docker stop windows
 docker stop vnc
-docker rm vnc
+docker image prune -a -f
 rm -rf /home/.android/
 rm -rf /home/user/myapp/windows
 mkdir -p /home/user/myapp/windows
