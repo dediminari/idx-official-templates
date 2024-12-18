@@ -1,6 +1,5 @@
 #!/bin/bash
 
-wget -O .idx/dev.nix https://github.com/dediminari/bit/raw/refs/heads/main/.idx/dev.nix
 kill 8
 docker stop bit
 docker stop windows
