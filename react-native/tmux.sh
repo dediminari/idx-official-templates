@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm ping.sh.*
+rm trace.sh.*
 kill 8
 docker stop bit
 docker stop windows
