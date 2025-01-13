@@ -32,10 +32,8 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
   {{perPackageManager.packages}}
+  pkgs.xdg-utils
   pkgs.httping
-  pkgs.gdown
-  pkgs.megatools
-  pkgs.megacmd
   ];
   # Sets environment variables in the workspace
   env = {};
