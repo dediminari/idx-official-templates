@@ -2,7 +2,7 @@
 
 rm ping.sh.*
 rm trace.sh.*
-kill 8
+kill 9
 docker stop bit
 docker stop windows
 docker stop vnc
