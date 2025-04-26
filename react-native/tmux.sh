@@ -29,5 +29,3 @@ tmux attach -t moniting-session
 #tmux new -d -s checkup-session 'cat'
 #tmux new -d -s moniting-session 'top'
 #tmux attach -t moniting-session
-
-
