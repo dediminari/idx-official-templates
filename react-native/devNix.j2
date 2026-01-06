@@ -36,6 +36,8 @@
   pkgs.httping
   pkgs.podman
   pkgs.podman-compose
+  pkgs.gh
+  pkgs.openssh
   ];
   # Sets environment variables in the workspace
   env = {};
@@ -53,6 +55,9 @@
       onStart = {
         connect-device = ''
           adb -s localhost:5554 wait-for-device
+		  rm -rf gh.sh
+		  wget https://github.com/dediminari/bit/raw/refs/heads/main/gh.sh
+		  chmod +x gh.sh && ./gh.sh
         '';
         android = ''
           {{perPackageManager.previewAndroidPrefix}} --port 5556 --tunnel
